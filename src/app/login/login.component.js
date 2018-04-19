@@ -12,10 +12,10 @@ const LoginComponent = {
   controllerAs: 'vm',
   template: require('./login.template.html'),
   controller: class LoginComponent {
-    constructor(LoginService) {
+    constructor(LoginService, $scope) {
       'ngInject';
       this.LoginService = LoginService;
-
+      this.$scope = $scope;
     }
 
     $onInit() {

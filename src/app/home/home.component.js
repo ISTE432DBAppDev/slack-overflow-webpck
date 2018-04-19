@@ -6,7 +6,6 @@ const HomeComponent = {
         'ngInject';
         this.HomeService = HomeService;
         this.$scope = $scope;
-  
       }
   
       $onInit() {
@@ -21,7 +20,7 @@ const HomeComponent = {
         }
   
         /**
-         * true if the user has permission to edit all events OR if they have permission to edit their own event and this is an event they created
+         * Watch for the user data to change. If it changes, check if the user is logged in. 
          */
         this.$scope.$watch('vm.user', function () {
             if(vm.user.loggedIn == true){

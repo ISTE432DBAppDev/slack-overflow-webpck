@@ -1,5 +1,5 @@
 const TipsComponent = {
-  template: require('./tips.html'),
+  template: require('./tips.template.html'),
   controller: class TipsComponent {
     constructor(TipsService) {
       'ngInject';

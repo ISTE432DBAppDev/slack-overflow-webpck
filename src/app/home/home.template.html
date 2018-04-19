@@ -1,4 +1,16 @@
-<main>
-  <h3>Home Component</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Slack-Overflow</h1>
+    </div><!-- end col -->
+  </div><!-- end row -->
+  
+  <login ng-if="vm.state=='login'"></login>
+  <topic ng-if="vm.state=='topic'"></topic>
+  <tips ng-if="vm.state=='tips'"></tips>
+  <posts ng-if="vm.state=='posts'"></posts>
+  <!--
+  <language ng-if="vm.state=='language'"></language>
+  -->
 
-</main>
+</div>

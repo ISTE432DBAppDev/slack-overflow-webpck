@@ -4,9 +4,12 @@ import '@uirouter/angularjs';
 import '../style/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import HomeModule from '../app/home/home.module';
+//import LanguageModule from '../app/language/language.module';
 import LoginModule from '../app/login/login.module';
 import PostsModule from '../app/posts/posts.module';
-
+import TipsModule from '../app/tips/tips.module';
+import TopicModule from '../app/topic/topic.module';
 
 let app = () => {
   return {
@@ -26,8 +29,12 @@ const APP_MODULE = 'app';
 
 angular.module(APP_MODULE, [
   'ui.router',
+  HomeModule,
   LoginModule,
-  PostsModule
+  PostsModule,
+  TipsModule,
+  TopicModule
+  //LanguageModule
 ])
 .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
   'ngInject';

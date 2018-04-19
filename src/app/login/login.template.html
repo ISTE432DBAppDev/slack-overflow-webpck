@@ -4,12 +4,14 @@
       <form id="connectForm" method="post">
         <div class="connection-info">
           <h3>Enter a Username</h3>
-          <input id="username" name="username" placeholder="i.e johndoe880"/>
+          
+          {{vm.initUserName}}
+          <input id="username" name="username" placeholder="{{vm.initUserName}}"/>
           </br>
           </br>
         </div>
         </br>
       </form>
-      <button id="submit" class="btn btn-success">Login</button>
+      <button id="submit" class="btn btn-success" ng-click="vm.goToTips()">Login</button>
   </div>
 </div>

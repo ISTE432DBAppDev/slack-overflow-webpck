@@ -5,7 +5,7 @@
     </div><!-- end col -->
   </div><!-- end row -->
   
-  <login ng-if="vm.state=='login'"></login>
+  <login ng-if="vm.state=='login'" user="vm.user"></login>
   <topic ng-if="vm.state=='topic'"></topic>
   <tips ng-if="vm.state=='tips'"></tips>
   <posts ng-if="vm.state=='posts'"></posts>

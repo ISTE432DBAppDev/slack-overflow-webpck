@@ -21,6 +21,29 @@ const TipsComponent = {
     $onInit() {
       this.TipsService.hello();
       const vm = this;
+
+      // this will be a service call
+      vm.tipsList = {
+        data: [
+          {
+            id: 0,
+            language: "Java",
+            rating: 4,
+            description: "Akjsfd sdlkd sdkjdf awigj ekjee."
+          },{
+            id: 1,
+            language: "c#",
+            rating: 6,
+            description: "Akjsfd sdlkd sdkjdf awigj ekjee."
+          },{
+            id: 2,
+            language: "JavaScript",
+            rating: -5,
+            description: "Akjsfd sdlkd sdkjdf awigj ekjee."
+          }
+        ]
+      };
+      
     }
   }
 };

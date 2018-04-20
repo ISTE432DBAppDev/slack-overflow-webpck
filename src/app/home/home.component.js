@@ -22,7 +22,7 @@ const HomeComponent = {
          */
         this.$scope.$watch('vm.user', function () {
             if(vm.user.name != ""){
-                vm.state = 'topic';
+                vm.state = 'tips';
             }
         });
       }

@@ -32,18 +32,18 @@ class AccountService {
   /**
    * @param $userName
    * @param $pwd
-   * @return null|resource
+   * @return string|resource
    * example return:
    *
    */
   public function createAccount($userName, $pwd) {
     $userName = filter_var($userName, FILTER_SANITIZE_STRING);
-    $salt = getSalt();
-    $hasedPWD = hash('sha256', $pwd.$salt);
+    $salt = $this -> getSalt();
+    $hashedPWD = hash('sha256', $pwd.$salt);
 
     $status = $this -> dataClass -> createAccount($userName, $hashedPWD, $salt);
     if ($status == true) {
-      return $status;
+      return '{"data":' . $status . '}';
     } else {
       return "{'error': 'This account name is already in use.'}";
     }
@@ -53,7 +53,7 @@ class AccountService {
   /**
    * @param $userName
    * @param $pwd
-   * @return bool|null
+   * @return string|null
    * example return:
    * "true"
    */
@@ -63,7 +63,7 @@ class AccountService {
     $hasedPWD = hash('sha256', $pwd.$salt);
 
     $status = $this -> dataClass -> loginAccount($userName, $hasedPWD);
-    return $status;
+      return '{"data":' . $status . '}';
   }
   
   /**

@@ -31,7 +31,7 @@ class UserRatingService {
   /**
    * @param $accountID
    * @param $tipID
-   * @return null|resource
+   * @return string|resource
    */
   public function createUserRating($accountID, $tipID) {
     $accountID = filter_var($accountID, FILTER_SANITIZE_NUMBER_INT);
@@ -39,7 +39,7 @@ class UserRatingService {
 
     $dataClass = new UserRatingData();
     $status = $dataClass -> createUserRating($accountID, $tipID);
-    return $status;
+      return '{"data":' . $status . '}';
   }
 
   /**

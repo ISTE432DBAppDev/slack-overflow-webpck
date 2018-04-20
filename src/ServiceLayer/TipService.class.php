@@ -34,7 +34,7 @@ class TipService {
    * @param $accountID
    * @param $language
    * @param $description
-   * @return null|resource
+   * @return string|resource
    */
   public function createTip($accountID, $language, $description) {
     $accountID = filter_var($accountID, FILTER_SANITIZE_NUMBER_INT);
@@ -42,11 +42,11 @@ class TipService {
     $description = filter_var($description, FILTER_SANITIZE_STRING);
 
     $status = $this -> getDataClass() -> createTip($accountID, $language, $description);
-    return $status;
+      return '{"data":' . $status . '}';
   }
 
   /**
-   * @return array|resource
+   * @return string|resource
    */
     public function getAllTipsForLanguage($language) {
         $allTips = $this -> getDataClass() -> getAllTipsForLanguage($language);
@@ -55,27 +55,27 @@ class TipService {
             $tipObject = new Tip($tip['tipID'], $tip['accountID'], stripslashes($tip['language']), stripslashes($tip['description']), $tip['rating']);
             array_push($allTipObjects,$tipObject);
         }
-        //can then go through and make a loop that creates all the json
-        return $allTipObjects;
+        $allTipObjectsAsJSON = json_encode($allTipObjects);
+        return $allTipObjectsAsJSON;
     }
 
   /**
    * @param $tipID
-   * @return null|resource
+   * @return string|resource
    */
   public function upvoteTip($tipID) {
     $tipID = filter_var($tipID, FILTER_SANITIZE_NUMBER_INT);
     $status = $this -> getDataClass() -> upvoteTip($tipID);
-    return $status;
+      return '{"data":' . $status . '}';
   }
 
   /**
    * @param $tipID
-   * @return null
+   * @return string
    */
   public function downvoteTip($tipID) {
     $tipID = filter_var($tipID, FILTER_SANITIZE_NUMBER_INT);
     $status = $this -> getDataClass() -> downvoteTip($tipID);
-    return $status;
+      return '{"data":' . $status . '}';
   }
 }

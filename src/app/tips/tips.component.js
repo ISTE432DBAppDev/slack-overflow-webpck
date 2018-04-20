@@ -23,27 +23,32 @@ const TipsComponent = {
       const vm = this;
 
       // this will be a service call
-      vm.tipsList = {
+      /*
+      {
         data: [
           {
-            id: 0,
-            language: "Java",
+            tipsID: 0,
+            accountID: 4,
+            language: "java",
             rating: 4,
             description: "Akjsfd sdlkd sdkjdf awigj ekjee."
           },{
-            id: 1,
-            language: "c#",
+            tipsID: 1,
+            accountID: 4,
+            language: "java",
             rating: 6,
             description: "Akjsfd sdlkd sdkjdf awigj ekjee."
           },{
-            id: 2,
-            language: "JavaScript",
+            tipsID: 2,
+            accountID: 5,
+            language: "java",
             rating: -5,
             description: "Akjsfd sdlkd sdkjdf awigj ekjee."
           }
         ]
-      };
-      
+      }
+      */
+      vm.tipsList = TipsService.getTips("java");
     }
   }
 };

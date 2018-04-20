@@ -1,10 +1,9 @@
 const LoginComponent = {
   bindings: {
     /*
+    Sends back loggined in user if successfuly logged in
     {
-      name: "John",
-      password: "123",
-      loggedIn: false
+      name: "John56"
     }
     */
     user: '=',
@@ -27,9 +26,7 @@ const LoginComponent = {
 
       vm.goToTips = function(){
         vm.user = {
-          name: "John",
-          password: "123",
-          loggedIn: true
+          name: vm.initUserName
         }
       }
     }

@@ -1,5 +1,14 @@
 const LanguageComponent = {
   template: require('./language.template.html'),
+  bindings: {
+    /*
+    {
+      Sends back the selected language
+      name: "Java"
+    }
+    */
+    language: '=',
+  },
   controllerAs: 'vm',
   controller: class LanguageComponent {
     constructor(languageService, $scope) {

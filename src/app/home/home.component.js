@@ -14,16 +14,14 @@ const HomeComponent = {
         vm.state = 'login';
 
         vm.user = {
-          name: "John",
-          password: "123",
-          loggedIn: false
+          name: ""
         }
   
         /**
          * Watch for the user data to change. If it changes, check if the user is logged in. 
          */
         this.$scope.$watch('vm.user', function () {
-            if(vm.user.loggedIn == true){
+            if(vm.user.name != ""){
                 vm.state = 'topic';
             }
         });

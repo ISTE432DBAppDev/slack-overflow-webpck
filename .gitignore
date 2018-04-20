@@ -10,3 +10,6 @@ node_modules/
 .idea/modules.xml
 .idea/SlackOverflowDev.iml
 src/DataLayer/dbconfig.php
+.idea/misc.xml
+.idea/slack-overflow-webpck.iml
+.idea/dictionaries/Minaloc.xml

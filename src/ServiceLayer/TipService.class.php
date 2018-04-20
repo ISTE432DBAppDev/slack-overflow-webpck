@@ -48,18 +48,16 @@ class TipService {
   /**
    * @return array|resource
    */
-  public function getAllTips() {
-    $allTips = $this -> getDataClass() -> getAllTips();
-    $allTipObjects = array();
-
-    foreach ($allTips as $tip){
-      $tipObject = new Tip($tip['tipID'], $tip['accountID'], stripslashes($tip['language']), stripslashes($tip['description']), $tip['rating']);
-      array_push($allTipObjects,$tipObject);
+    public function getAllTipsForLanguage($language) {
+        $allTips = $this -> getDataClass() -> getAllTipsForLanguage($language);
+        $allTipObjects = array();
+        foreach ($allTips as $tip){
+            $tipObject = new Tip($tip['tipID'], $tip['accountID'], stripslashes($tip['language']), stripslashes($tip['description']), $tip['rating']);
+            array_push($allTipObjects,$tipObject);
+        }
+        //can then go through and make a loop that creates all the json
+        return $allTipObjects;
     }
-
-    //can then go through and make a loop that creates all the json
-    return $allTipObjects;
-  }
 
   /**
    * @param $tipID

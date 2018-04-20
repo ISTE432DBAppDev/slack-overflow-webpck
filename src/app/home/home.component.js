@@ -16,6 +16,11 @@ const HomeComponent = {
         vm.user = {
           name: ""
         }
+
+        vm.tipsData = {
+          language: "java",
+          user: "John56"
+        }
   
         /**
          * Watch for the user data to change. If it changes, check if the user is logged in. 

@@ -48,7 +48,7 @@ const TipsComponent = {
         ]
       }
       */
-      vm.tipsList = TipsService.getTips("java");
+      vm.tipsList = TipsService.getTips(vm.data.language);
     }
   }
 };

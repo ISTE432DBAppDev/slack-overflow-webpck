@@ -1,6 +1,6 @@
 import angular from 'angular';
 import 'angular-mocks';
-import AppModule from '../../../index';
+import AppModule from '../app';
 
 describe('tips component controller', () => {
   let $controller;
@@ -17,4 +17,3 @@ describe('tips component controller', () => {
     expect(true).toBeTruthy();
   });
 });
-

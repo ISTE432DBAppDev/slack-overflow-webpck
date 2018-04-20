@@ -1,16 +1,18 @@
 import angular from 'angular';
 import 'angular-mocks';
 import AppModule from '../app';
+import MockTipsService from './MockTipsService';
 
 describe('tips component controller', () => {
   let $controller;
   let $service;
-  var allTopicTips = [
+
+  var specificTopicTips = [
   {
     accountid: '1',
     language: 'java',
     description: 'Java Object Oriented Programming',
-    rating: 5
+    rating: 1
   },
   {
     accountid: '5',
@@ -21,7 +23,7 @@ describe('tips component controller', () => {
 
 ];
 
-  beforeEach(() => {
+  beforeEach(() =>
 
     // angular.mock allows us to specify the module
     angular.mock.module(AppModule);
@@ -29,10 +31,10 @@ describe('tips component controller', () => {
     angular.mock.inject((_$componentController_) => {
       $controller = _$componentController_('tips');
     });
-
   });
+  beforeEach(MockTipsService);
 
-  it('should pass this du', () => {
+  it('Shoud Pass a dummy test', () => {
     expect(true).toBeTruthy();
   });
 

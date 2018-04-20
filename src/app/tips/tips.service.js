@@ -1,7 +1,7 @@
 export default class TipsService {
-  constructor($log) {
+  constructor($log, $http) {
     'ngInject';
-
+    this.$http = $http;
     this.$log = $log;
   }
 
@@ -11,8 +11,10 @@ export default class TipsService {
   }
 
   // Retrieves All the Tips for a particular topic from our PHP backend
-  getAllTips(topic){
-    console.log('This is the tips component!');
+  getTips(language){
+    this.$http.get("./mockData.json").then(function(response){
+      return response;
+    });
   }
 
   // retrieves tips created by the currently logged in user

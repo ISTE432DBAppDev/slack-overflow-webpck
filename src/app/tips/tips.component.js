@@ -48,7 +48,8 @@ const TipsComponent = {
         ]
       }
       */
-      vm.tipsList = TipsService.getTips(vm.data.language);
+      vm.tipsList = this.TipsService.getTips(vm.data.language);
+
     }
   }
 };

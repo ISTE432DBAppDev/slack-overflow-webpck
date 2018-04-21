@@ -1,11 +1,19 @@
 <div class="row">
   <div class="col-xs-12">
-    <h1>Tips Component!</h1>
+    <h1>Tips on <span style="text-transform: uppercase;">{{vm.data.language}}!</span></h1>
+  </div>
+</div>
 
-    <div class="data">
-      <div class="tip" ng-repeat="tip in vm.tipsList.data">
-        {{tip.language}}
-        {{tip.rating}}
+<div class="row">
+  <div class="col-lg-4 col-md-6 portfolio-item tip" ng-repeat="tip in vm.tipsList.data">
+    <div class="card h-100">
+      <h4 class="card-header">
+        <p class="card-text">{{tip.description}}</p>
+      </h4>
+      <div class="card-body">
+        <a ng-click="vm.upVote(tip.tipsID)"><i class="fa fa-thumbs-up" style="color:forestgreen"></i></a>
+        <a ng-click="vm.downVote(tip.tipsID)"><i class="fa fa-thumbs-down" style="color:red"></i></a>
+        Rating: {{tip.rating}}
       </div>
     </div>
   </div>

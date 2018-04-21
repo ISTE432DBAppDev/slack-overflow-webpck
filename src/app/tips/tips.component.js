@@ -5,7 +5,7 @@ const TipsComponent = {
     accepts the language and user to display tips
     {
       language: "java",
-      user: "John56"
+      userID: "1"
     }
     */
     data: '<',
@@ -23,32 +23,17 @@ const TipsComponent = {
       const vm = this;
 
       // this will be a service call
-      /*
-      {
-        data: [
-          {
-            tipsID: 0,
-            accountID: 4,
-            language: "java",
-            rating: 4,
-            description: "Akjsfd sdlkd sdkjdf awigj ekjee."
-          },{
-            tipsID: 1,
-            accountID: 4,
-            language: "java",
-            rating: 6,
-            description: "Akjsfd sdlkd sdkjdf awigj ekjee."
-          },{
-            tipsID: 2,
-            accountID: 5,
-            language: "java",
-            rating: -5,
-            description: "Akjsfd sdlkd sdkjdf awigj ekjee."
-          }
-        ]
-      }
-      */
       vm.tipsList = this.TipsService.getTips(vm.data.language);
+
+      vm.upVote = function(tipId){
+        var success = this.TipsService.upVote(tipId, vm.data.userID);
+        console.log("Vote Up!");
+      }
+
+      vm.downVote = function(tipId){
+        var success = this.TipsService.downVote(tipId, vm.data.userID);
+        console.log("Vote Down!");
+      }
 
     }
   }

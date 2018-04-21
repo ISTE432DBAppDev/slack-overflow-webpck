@@ -1,6 +1,7 @@
 /* styles in src/style directory are applied to the whole page */
 body {
   background: #FAFAFB;
+  font-size: 16px;
 }
 main {
   padding: 1em;

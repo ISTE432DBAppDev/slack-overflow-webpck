@@ -2,4 +2,15 @@ tips {
   h1 {
     color: salmon;
   }
+  i.fa{
+    display: inline-block;
+    position: relative;
+    padding: 5px;
+    font-size: 22px;
+  }
+  .tip{
+    i:hover{
+      cursor: pointer;
+    }
+  }
 }

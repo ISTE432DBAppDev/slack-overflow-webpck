@@ -35,6 +35,12 @@ const TipsComponent = {
         console.log("Vote Down!");
       }
 
+      vm.addTip = function(){
+        var success = this.TipsService.createTip(vm.data.userID, vm.data.language, vm.tipDesc);
+        vm.tipDesc = "";
+        console.log("Tip created!");
+      }
+
     }
   }
 };

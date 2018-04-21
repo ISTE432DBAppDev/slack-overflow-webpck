@@ -13,4 +13,11 @@ tips {
       cursor: pointer;
     }
   }
+  .addTip{
+    margin-bottom: 40px;
+    input{
+      width: 100%;
+      max-width: 400px;
+    }
+  }
 }

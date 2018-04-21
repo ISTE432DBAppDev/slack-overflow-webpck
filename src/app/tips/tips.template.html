@@ -3,6 +3,15 @@
     <h1>Tips on <span style="text-transform: uppercase;">{{vm.data.language}}!</span></h1>
   </div>
 </div>
+<div class="row addTip">
+  <div class="col-xs-12">
+    <h2>Add a tip:</h2>
+    <form class="form-inline" ng-submit="vm.addTip()">
+      <input type="text" class="form-control" ng-model="vm.tipDesc" />
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-lg-4 col-md-6 portfolio-item tip" ng-repeat="tip in vm.tipsList.data">

@@ -2,4 +2,7 @@ topic {
   h1 {
     color: salmon;
   }
+  a::first-letter{
+    text-transform: uppercase;
+  }
 }

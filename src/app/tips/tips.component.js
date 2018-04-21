@@ -21,8 +21,7 @@ const TipsComponent = {
     $onInit() {
       this.TipsService.hello();
       const vm = this;
-
-      // this will be a service call
+      
       vm.tipsList = this.TipsService.getTips(vm.data.language);
       console.log("vm.data.language: " + vm.data.language);
 

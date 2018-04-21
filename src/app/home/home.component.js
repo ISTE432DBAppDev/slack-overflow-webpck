@@ -63,7 +63,7 @@ const HomeComponent = {
          * to the posts module or tips module. 
          */
         this.$scope.$watch('vm.topicData.topic', function () {
-          if(vm.topicData.topic == "class" || vm.topicData.topic == "variables"){
+          if(vm.topicData.topic == "functions" || vm.topicData.topic == "variables"){
             vm.postsData.topic = vm.topicData.topic;
             vm.state = 'posts';
           } else if(vm.topicData.topic == "tips"){

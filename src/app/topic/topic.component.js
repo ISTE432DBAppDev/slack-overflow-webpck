@@ -1,5 +1,5 @@
 const TopicService = {
-  template: require('./topic.html'),
+  template: require('./topic.template.html'),
   bindings: {
     /*
     accepts the language and sends back the topic
@@ -21,6 +21,11 @@ const TopicService = {
     $onInit() {
       this.TopicService.hello();
       const vm = this;
+
+      vm.submitTopic = function(topic){
+        console.log("Submit topic");
+        vm.data.topic = topic;
+      };
     }
   }
 };

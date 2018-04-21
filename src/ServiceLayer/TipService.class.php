@@ -45,14 +45,15 @@ class TipService {
       return '{"data":' . $status . '}';
   }
 
-  /**
-   * @return string|resource
-   */
+    /**
+     * @param $language
+     * @return string|resource
+     */
     public function getAllTipsForLanguage($language) {
         $allTips = $this -> getDataClass() -> getAllTipsForLanguage($language);
         $allTipObjects = array();
         foreach ($allTips as $tip){
-            $tipObject = new Tip($tip['tipID'], $tip['accountID'], stripslashes($tip['language']), stripslashes($tip['description']), $tip['rating']);
+            $tipObject = new Tip($tip['tipaID'], $tip['accountsID'], stripslashes($tip['language']), stripslashes($tip['description']), $tip['rating']);
             array_push($allTipObjects,$tipObject);
         }
         $allTipObjectsAsJSON = json_encode($allTipObjects);

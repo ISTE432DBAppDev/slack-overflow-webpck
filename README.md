@@ -25,7 +25,7 @@ $ cd slack-overflow
 $ npm install
 
 # build the files with npm
-$ npm build
+$ npm run build
 
 # start the server
 $ npm start

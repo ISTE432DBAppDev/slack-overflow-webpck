@@ -21,6 +21,10 @@ const PostsComponent = {
     $onInit() {
       this.PostsService.hello();
       const vm = this;
+
+      // url example
+      var url = "https://api.stackexchange.com";
+      var query = "/2.2/search/advanced?page=1&pagesize=5&order=desc&sort=relevance&accepted=True&tagged=java&title=method&site=stackoverflow"
     }
   }
 };

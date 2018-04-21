@@ -5,7 +5,7 @@ import '../style/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import HomeModule from '../app/home/home.module';
-//import LanguageModule from '../app/language/language.module';
+import LanguageModule from '../app/language/language.module';
 import LoginModule from '../app/login/login.module';
 import PostsModule from '../app/posts/posts.module';
 import TipsModule from '../app/tips/tips.module';
@@ -33,8 +33,8 @@ angular.module(APP_MODULE, [
   LoginModule,
   PostsModule,
   TipsModule,
-  TopicModule
-  //LanguageModule
+  TopicModule,
+  LanguageModule
 ])
 .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
   'ngInject';

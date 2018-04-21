@@ -3,7 +3,7 @@ const LoginComponent = {
     /*
     Sends back loggined in user if successfuly logged in
     {
-      name: "John56"
+      userID: "1"
     }
     */
     user: '=',
@@ -22,11 +22,21 @@ const LoginComponent = {
 
       const vm = this;
 
-      vm.initUserName = vm.user.name;
-
-      vm.goToTips = function(){
-        vm.user = {
-          name: vm.initUserName
+      vm.login = function(){
+        if(vm.createAccount == true){
+          var data = this.LoginService.createAccount(vm.username, vm.password);
+          if(data.data.userID != null){
+            vm.user.userID = data.data.userID;
+            console.log("vm.user.userID: " + vm.user.userID);
+          }
+          console.log("Creating account");
+        } else {
+          var data = this.LoginService.loginAccount(vm.username, vm.password);
+          if(data.data.userID != null){
+            vm.user.userID = data.data.userID;
+            console.log("vm.user.userID: " + vm.user.userID);
+          }
+          console.log("Logging in: " + data.data.userID);
         }
       }
     }

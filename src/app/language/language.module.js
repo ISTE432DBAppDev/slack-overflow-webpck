@@ -17,4 +17,4 @@ const LanguageModule = angular
   })
   .name;
 
-export default LanguageService;
+export default LanguageModule;

@@ -1,4 +1,4 @@
-const LanguageComponent = {
+const LanguageService = {
   template: require('./language.template.html'),
   bindings: {
     /*
@@ -11,17 +11,17 @@ const LanguageComponent = {
   },
   controllerAs: 'vm',
   controller: class LanguageComponent {
-    constructor(languageService, $scope) {
+    constructor(LanguageService, $scope) {
       'ngInject';
-      this.LanuageService = LanuageService;
+      this.LanguageService = LanguageService;
       this.$scope = $scope;
     }
 
     $onInit() {
-      this.LanuageService.hello();
+      this.LanguageService.hello();
       const vm = this;
     }
   }
 };
 
-export default LanguageComponent;
+export default LanguageService;

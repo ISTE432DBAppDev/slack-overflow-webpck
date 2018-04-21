@@ -1,15 +1,41 @@
 <div class="row">
-    <div class="col-xs-12">
-      <h1>Login Component!</h1>
-      <form id="connectForm" method="post">
-        <div class="connection-info">
-          <h3>Enter a Username</h3>
-          <input id="username" name="username" ng-model="vm.initUserName"/>
-          </br>
-          </br>
-        </div>
+  <div class="col-xs-12">
+    <h1>Login Component!</h1>
+    <!--<form class="form-inline" id="connectForm" method="post">
+      <div class="connection-info">
+        <h3>Enter a Username</h3>
+        <input id="username" class="form-control" name="username" ng-model="vm.initUserName"/>
         </br>
-      </form>
-      <button id="submit" class="btn btn-success" ng-click="vm.goToTips()">Login</button>
+        </br>
+      </div>
+      </br>
+    </form>
+  -->
   </div>
+</div>
+<div class="row">
+  <div class="col-xs-4"></div>
+  <div class="col-xs-4">
+    <form class="form-inline" ng-submit="vm.login()">
+      <div class="row">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" class="form-control" placeholder="Enter Username" ng-model="vm.username" required>
+      </div>
+      <div class="row">
+        <label for="psw"><b>Password</b></label>
+        <input type="password" class="form-control" placeholder="Enter Password" ng-model="vm.password" required>
+      </div>
+      <div class="row">
+        <label>
+          <input type="checkbox" ng-model="vm.createAccount">Create a New Account
+        </label>
+      </div>
+      <label>
+          
+      <div class="row">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-xs-4"></div>
 </div>

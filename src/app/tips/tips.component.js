@@ -1,5 +1,6 @@
 const TipsComponent = {
   template: require('./tips.template.html'),
+  controllerAs: 'vm',
   bindings: {
     /*
     accepts the language and user to display tips
@@ -10,7 +11,6 @@ const TipsComponent = {
     */
     data: '<',
   },
-  controllerAs: 'vm',
   controller: class TipsComponent {
     constructor(TipsService, $scope) {
       'ngInject';
@@ -24,6 +24,7 @@ const TipsComponent = {
 
       // this will be a service call
       vm.tipsList = this.TipsService.getTips(vm.data.language);
+      console.log("vm.data.language: " + vm.data.language);
 
       vm.upVote = function(tipId){
         var success = this.TipsService.upVote(tipId, vm.data.userID);

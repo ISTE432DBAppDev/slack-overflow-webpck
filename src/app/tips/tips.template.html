@@ -7,8 +7,12 @@
   <div class="col-xs-12">
     <h2>Add a tip:</h2>
     <form class="form-inline" ng-submit="vm.addTip()">
-      <input type="text" class="form-control" ng-model="vm.tipDesc" />
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="row">
+        <input type="text" class="form-control" ng-model="vm.tipDesc" required>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
     </form>
   </div>
 </div>

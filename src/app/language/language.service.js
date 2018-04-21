@@ -1,8 +1,6 @@
 export default class LanguageService {
-  constructor($log) {
+  constructor() {
     'ngInject';
-
-    this.$log = $log;
   }
 
   hello() {

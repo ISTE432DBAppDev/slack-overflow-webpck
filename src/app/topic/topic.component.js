@@ -8,7 +8,7 @@ const TopicService = {
       topic: "variables"
     }
     */
-    data: '<',
+    data: '=',
   },
   controllerAs: 'vm',
   controller: class TopicComponent {

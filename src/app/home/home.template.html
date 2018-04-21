@@ -5,10 +5,10 @@
     </div><!-- end col -->
   </div><!-- end row -->
   
-  <login ng-if="vm.state=='login'" user="vm.user"></login>
-  <topic ng-if="vm.state=='topic'"></topic>
+  <login ng-if="vm.state=='login'" user="vm.loginData"></login>
+  <topic ng-if="vm.state=='topic'" data="vm.topicData"></topic>
   <tips ng-if="vm.state=='tips'" data="vm.tipsData"></tips>
-  <posts ng-if="vm.state=='posts'"></posts>
-  <language ng-if="vm.state=='language'"></language>
+  <posts ng-if="vm.state=='posts'" data="vm.postsData"></posts>
+  <language ng-if="vm.state=='language'" data="vm.langData"></language>
 
 </div>

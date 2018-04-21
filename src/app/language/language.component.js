@@ -4,10 +4,10 @@ const LanguageService = {
     /*
     {
       Sends back the selected language
-      name: "Java"
+      language: "java"
     }
     */
-    language: '=',
+    data: '=',
   },
   controllerAs: 'vm',
   controller: class LanguageComponent {
@@ -20,6 +20,11 @@ const LanguageService = {
     $onInit() {
       this.LanguageService.hello();
       const vm = this;
+
+      vm.submitLang = function(lang){
+        console.log("Submit Langugage");
+        vm.data.language = lang;
+      };
     }
   }
 };

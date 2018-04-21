@@ -37,7 +37,7 @@ class AccountService {
    *
    */
   public function createAccount($userName, $pwd) {
-    $userName = filter_var($userName, FILTER_SANITIZE_STRING);
+    $userName = filter_var($userName, FILTER_SANITIZE_EMAIL);
     $salt = $this -> getSalt();
     $hashedPWD = hash('sha256', $pwd.$salt);
 
@@ -58,7 +58,7 @@ class AccountService {
    * "true"
    */
   public function loginAccount($userName, $pwd) {
-    $userName = filter_var($userName, FILTER_SANITIZE_STRING);
+    $userName = filter_var($userName, FILTER_SANITIZE_EMAIL);
     $salt = $this -> dataClass -> getAccountSalt($userName);
     $hasedPWD = hash('sha256', $pwd.$salt);
 

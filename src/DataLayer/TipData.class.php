@@ -37,9 +37,10 @@ class TipData {
     }
   }
 
-  /**
-   * @return null|resource
-   */
+    /**
+     * @param $language
+     * @return null|resource
+     */
     public function getAllTipsForLanguage($language) {
         try {
             $dbconn = $this -> getDBInfo();

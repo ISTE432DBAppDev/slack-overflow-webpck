@@ -13,3 +13,6 @@ src/DataLayer/dbconfig.php
 .idea/misc.xml
 .idea/slack-overflow-webpck.iml
 .idea/dictionaries/Minaloc.xml
+package.json
+package-lock.json
+package-lock.json

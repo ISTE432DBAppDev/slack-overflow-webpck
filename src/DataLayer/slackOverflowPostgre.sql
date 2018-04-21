@@ -12,20 +12,21 @@ CREATE TABLE ACCOUNTS (
 );
 
 
-CREATE TYPE LANGUAGE AS ENUM ('Java', 'C++', 'Javascript', 'CSS');
+CREATE TYPE LANGUAGE AS ENUM ('Java', 'Javascript', 'PHP');
 
 DROP TABLE IF EXISTS TIPS;
 CREATE TABLE TIPS (
+  tipsID	INT	NOT NULL,
   accountID   INT NOT NULL REFERENCES ACCOUNTS (accountID),
   language LANGUAGE,
   description VARCHAR(255),
   rating      INT NOT NULL
+  PRIMARY KEY (tipsID)
 );
 
 DROP TABLE IF EXISTS USERRATINGS;
 CREATE TABLE USERRATINGS (
   accountID INT      NOT NULL REFERENCES ACCOUNTS (accountID),
-  tipID     INT      NOT NULL,
-  username  VARCHAR(255),
-  rating    SMALLINT NOT NULL
+  tipsID     INT      NOT NULL REFERENCES TIPS (tipsID),
+  PRIMARY KEY (accountID, tipsID)
 );

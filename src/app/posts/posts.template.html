@@ -3,3 +3,14 @@
       <h1>Posts Component!</h1>
   </div>
 </div>
+<div class="row">
+  <div class="col-lg-4 col-md-6 portfolio-item tip" ng-repeat="post in vm.postsList">
+    <div class="card h-100">
+      <h4 class="card-header">
+        <p class="card-text" ng-bind-html="post.title"></p>
+      </h4>
+      <div class="card-body"  ng-bind-html="post.answer">
+      </div>
+    </div>
+  </div>
+</div>

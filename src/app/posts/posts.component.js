@@ -12,19 +12,48 @@ const PostsComponent = {
   },
   controllerAs: 'vm',
   controller: class PostsComponent {
-    constructor(PostsService, $scope) {
+    constructor(PostsService, $scope, $sce) {
       'ngInject';
       this.PostsService = PostsService;
       this.$scope = $scope;
+      this.$sce = $sce;
     }
 
     $onInit() {
       this.PostsService.hello();
       const vm = this;
 
-      // url example
-      var url = "https://api.stackexchange.com";
-      var query = "/2.2/search/advanced?page=1&pagesize=5&order=desc&sort=relevance&accepted=True&tagged=java&title=method&site=stackoverflow"
+      vm.postsList = [
+        { title: "",
+          answer: ""},
+        { title: "",
+        answer: ""},
+        { title: "",
+        answer: ""},
+        { title: "",
+        answer: ""},
+        { title: "",
+        answer: ""}
+      ];
+
+      this.PostsService.getPosts(vm.data.language, vm.data.topic).then(function(data){
+        console.log("this.PostsService.getPosts");
+        console.log(data);
+        var i;
+        for(i=0; i<data.items.length; i++){
+          vm.postsList[i].title = vm.$sce.trustAsHtml(data.items[i].title);
+          vm.getAnswer(data.items[i].accepted_answer_id, i);
+        }
+      });
+
+      vm.getAnswer = function(id, i){
+        console.log("inside vm.getAnswer");
+        this.PostsService.getAnswer(id).then(function(data){
+          console.log("this.PostsService.getAnswer(id)");
+          console.log(data);
+          vm.postsList[i].answer = vm.$sce.trustAsHtml(data.items[0].body);
+        });
+      };
     }
   }
 };

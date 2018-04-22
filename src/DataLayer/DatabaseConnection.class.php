@@ -33,17 +33,22 @@ class DatabaseConnection {
       $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$username;password=$password";
       $this -> _connection = new PDO($dsn);
 
-      if ($this -> $_connection) {
-        echo "Connected to the <strong> =" . $this -> $_connection . "</strong> database successfully!";
+      if ($this -> _connection) {
+        echo "Connected to the database successfully!";
       }
 
     } catch (PDOException $e) {
       #Open log file and add error message
+        /*
       echo $e -> getMessage() . "\n";
       $logFile = 'phpErrors.txt';
       $currentLogFile = file_get_contents($logFile);
       $currentLogFile .= "\n" . date('l jS \of F Y h:i:s A') . $e -> getMessage();
       file_put_contents($logFile, $currentLogFile);
+        */
+        echo "Credentials: " . $host . $port . $dbname .$username . $password;
+        echo '<br>';
+        echo $e;
       exit();
     }
   }
@@ -93,7 +98,7 @@ class DatabaseConnection {
    * @return PDO
    */
   function getConnection() {
-    $dbh = null;
+    //$dbh = null;
     return $this -> _connection;
   }
 

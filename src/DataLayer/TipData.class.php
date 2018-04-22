@@ -31,6 +31,7 @@ class TipData {
     try {
       $instance = DatabaseConnection ::getInstance();
       return $conn = $instance -> getConnection();
+      //return $instance;
     } catch (Exception $e) {
       echo $e -> getMessage();
       return null;
@@ -39,13 +40,14 @@ class TipData {
 
     /**
      * @param $language
-     * @return null|resource
+     * @return array|null|resource
      */
     public function getAllTipsForLanguage($language) {
         try {
             $dbconn = $this -> getDBInfo();
-            pg_prepare($dbconn, "getAllTipsForLanguageQuery", "SELECT * FROM TIPS WHERE language = $1");
-            $result = pg_execute($dbconn, "getAllTipsForLanguageQuery", array($language));
+            $statement = $dbconn -> prepare("SELECT * FROM TIPS WHERE language = ?");
+            $statement -> execute(array($language));
+            $result = $statement -> fetchAll();
             return $result;
         } catch (Exception $e) {
             echo $e;

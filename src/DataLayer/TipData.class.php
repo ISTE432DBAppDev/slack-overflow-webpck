@@ -42,11 +42,11 @@ class TipData {
      * @param $language
      * @return array|null|resource
      */
-    public function getAllTipsForLanguage($language) {
+    public function getAllTipsForLanguage($languageID) {
         try {
             $dbconn = $this -> getDBInfo();
-            $statement = $dbconn -> prepare("SELECT * FROM TIPS WHERE language = ?");
-            $statement -> execute(array($language));
+            $statement = $dbconn -> prepare("SELECT * FROM tips WHERE languageID = ?");
+            $statement -> execute(array($languageID));
             $result = $statement -> fetchAll();
             return $result;
         } catch (Exception $e) {

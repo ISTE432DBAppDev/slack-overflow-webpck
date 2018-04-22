@@ -5,7 +5,7 @@
  * Description:
  */
 
-class Tip {
+class Tip implements JsonSerializable {
   /**
    * @var
    */
@@ -17,7 +17,7 @@ class Tip {
   /**
    * @var
    */
-  private $language;
+  private $languageID;
   /**
    * @var
    */
@@ -35,10 +35,10 @@ class Tip {
    * @param $description
    * @param $rating
    */
-  public function __construct($tipID, $accountID, $language, $description, $rating) {
+  public function __construct($tipID, $accountID, $languageID, $description, $rating) {
     $this -> tipID = $tipID;
     $this -> accountID = $accountID;
-    $this -> language = $language;
+    $this -> languageID = $languageID;
     $this -> description = $description;
     $this -> rating = $rating;
   }
@@ -75,15 +75,15 @@ class Tip {
   /**
    * @return mixed
    */
-  public function getLanguage() {
-    return $this -> language;
+  public function getLanguageID() {
+    return $this -> languageID;
   }
 
   /**
    * @param mixed $language
    */
-  public function setLanguage($language) {
-    $this -> language = $language;
+  public function setLanguage($languageID) {
+    $this -> languageID = $languageID;
   }
 
   /**
@@ -112,5 +112,15 @@ class Tip {
    */
   public function setRating($rating) {
     $this -> rating = $rating;
+  }
+
+  public function jsonSerialize() {
+        return array(
+            'tipsid' => $this -> tipID,
+            'accountid' => $this -> accountID,
+            'languageid' => $this -> languageID,
+            'description' => $this -> description,
+            'rating' => $this -> rating
+        );
   }
 }

@@ -6,37 +6,40 @@
  */
 
 class TipData {
-  /**
-   * @param $accountID
-   * @param $language
-   * @param $description
-   * @return null|resource
-   */
-  public function createTip($accountID, $language, $description) {
-    try {
-      $dbconn = $this -> getDBInfo();
-      pg_prepare($dbconn, "createTipQuery", "INSERT INTO TIPS (accountID, langauge, description, rating) VALUES ($1, $2, $3, 0)");
-      $result = pg_execute($dbconn, "createTipQuery", array($accountID, $language, $description));
-      return $result;
-    } catch (Exception $e) {
-      echo $e;
-      return null;
-    }
-  }
+    /**
+     * @param $accountID
+     * @param $language
+     * @param $description
+     * @return null|resource
+     */
+    public function createTip($accountID, $languageID, $description) {
+        try {
+            $dbconn = $this -> getDBInfo();
+            $statement = $dbconn -> prepare("INSERT INTO TIPS (accountid, languageid, description, rating) VALUES (:accountID, :languageID, :description, 0)");
 
-  /**
-   * @return null|PDO
-   */
-  private function getDBInfo() {
-    try {
-      $instance = DatabaseConnection ::getInstance();
-      return $conn = $instance -> getConnection();
-      //return $instance;
-    } catch (Exception $e) {
-      echo $e -> getMessage();
-      return null;
+            $statement -> bindValue(':accountID', $accountID);
+            $statement -> bindValue(':languageID', $languageID);
+            $statement -> bindValue(':description', $description);
+
+            $statement -> execute();
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
     }
-  }
+
+    /**
+     * @return null|PDO
+     */
+    private function getDBInfo() {
+        try {
+            $instance = DatabaseConnection ::getInstance();
+            return $conn = $instance -> getConnection();
+        } catch (Exception $e) {
+            echo $e -> getMessage();
+            return null;
+        }
+    }
 
     /**
      * @param $language
@@ -55,35 +58,39 @@ class TipData {
         }
     }
 
-  /**
-   * @param $tipID
-   * @return null|resource
-   */
-  public function upvoteTip($tipID) {
-    try {
-      $dbconn = $this -> getDBInfo();
-      pg_prepare($dbconn, "upvoteTipQuery", "UPDATE TIPS SET rating = rating + 1 WHERE tipID = $1");
-      $result = pg_execute($dbconn, "upvoteTipQuery", array($tipID));
-      return $result;
-    } catch (Exception $e) {
-      echo $e;
-      return null;
-    }
-  }
+    /**
+     * @param $tipID
+     * @return null|resource
+     */
+    public function upvoteTip($tipsID) {
+        try {
+            $dbconn = $this -> getDBInfo();
+            $statement = $dbconn -> prepare("UPDATE TIPS SET rating = rating + 1 WHERE tipsID = :tipsID");
 
-  /**
-   * @param $tipID
-   * @return null
-   */
-  public function downvoteTip($tipID) {
-    try {
-      $dbconn = $this -> getDBInfo();
-      pg_prepare($dbconn, "downvoteTipQuery", "UPDATE TIPS SET rating = rating - 1 WHERE tipID = $1");
-      $result = pg_execute($dbconn, "downvoteTipQuery", array($tipID));
-      return $result;
-    } catch (Exception $e) {
-      echo $e;
-      return null;
+            $statement -> bindValue(':tipsID', $tipsID);
+
+            $statement -> execute();
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
     }
-  }
+
+    /**
+     * @param $tipID
+     * @return null
+     */
+    public function downvoteTip($tipsID) {
+        try {
+            $dbconn = $this -> getDBInfo();
+            $statement = $dbconn -> prepare("UPDATE TIPS SET rating = rating - 1 WHERE tipsid = :tipsID");
+
+            $statement -> bindValue(':tipsID', $tipsID);
+
+            $statement -> execute();
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
 }

@@ -17,7 +17,7 @@ CREATE TYPE language AS ENUM('Java','C++','Javascript','CSS');
 
 DROP TABLE IF EXISTS TIPS CASCADE;
 CREATE TABLE TIPS(
-  TipID INT NOT NULL SERIAL,
+  TipID INT NOT NULL SERIAL, -- Serial: Autoincrement equivalent 
 	accountID INT NOT NULL REFERENCES ACCOUNTS(accountID),
 	language language,
 	description VARCHAR(255),

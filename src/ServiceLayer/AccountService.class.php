@@ -75,9 +75,13 @@ class AccountService {
     public function loginAccount($userName, $pwd) {
         $userName = filter_var($userName, FILTER_SANITIZE_EMAIL);
         $salt = $this -> dataClass -> getAccountSalt($userName);
-        $hasedPWD = hash('sha256', $pwd . $salt);
-
-        $status = $this -> dataClass -> loginAccount($userName, $hasedPWD);
+        if ($salt != false){
+            $saltedPWD = $pwd . $salt;
+            $hashedPWD = hash('sha256', $saltedPWD);
+            $status = $this -> dataClass -> loginAccount($userName, $hashedPWD);
+        } else {
+            $status = "Salt not found";
+        }
         return '{"data":' . $status . '}';
     }
 }

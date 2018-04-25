@@ -8,7 +8,7 @@
 class TipData {
     /**
      * @param $accountID
-     * @param $language
+     * @param $languageID
      * @param $description
      * @return null|resource
      */
@@ -42,7 +42,7 @@ class TipData {
     }
 
     /**
-     * @param $language
+     * @param $languageID
      * @return array|null|resource
      */
     public function getAllTipsForLanguage($languageID) {
@@ -59,7 +59,7 @@ class TipData {
     }
 
     /**
-     * @param $tipID
+     * @param $tipsID
      * @return null|resource
      */
     public function upvoteTip($tipsID) {
@@ -77,7 +77,7 @@ class TipData {
     }
 
     /**
-     * @param $tipID
+     * @param $tipsID
      * @return null
      */
     public function downvoteTip($tipsID) {

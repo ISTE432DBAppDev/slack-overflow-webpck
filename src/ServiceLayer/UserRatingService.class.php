@@ -33,13 +33,12 @@ class UserRatingService {
      * @param $tipID
      * @return string|resource
      */
-    public function createUserRating($accountID, $tipID) {
+    public function createUserRating($accountID, $tipsID) {
         $accountID = filter_var($accountID, FILTER_SANITIZE_NUMBER_INT);
-        $tipID = filter_var($tipID, FILTER_SANITIZE_NUMBER_INT);
+        $tipsID = filter_var($tipsID, FILTER_SANITIZE_NUMBER_INT);
 
         $dataClass = new UserRatingData();
-        $status = $dataClass -> createUserRating($accountID, $tipID);
-        return '{"data":' . $status . '}';
+        $dataClass -> createUserRating($accountID, $tipsID);
     }
 
     /**
@@ -47,12 +46,12 @@ class UserRatingService {
      * @param $tipID
      * @return bool|null|resource
      */
-    public function checkUserRating($accountID, $tipID) {
+    public function checkUserRating($accountID, $tipsID) {
         $accountID = filter_var($accountID, FILTER_SANITIZE_NUMBER_INT);
-        $tipID = filter_var($tipID, FILTER_SANITIZE_NUMBER_INT);
+        $tipsID = filter_var($tipsID, FILTER_SANITIZE_NUMBER_INT);
 
         $dataClass = new UserRatingData();
-        $ratingExist = $dataClass -> createUserRating($accountID, $tipID);
+        $ratingExist = $dataClass -> checkUserRating($accountID, $tipsID);
         return $ratingExist;
     }
 

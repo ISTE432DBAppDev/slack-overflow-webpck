@@ -12,12 +12,14 @@ class UserRatingData {
      * @param $tipID
      * @return null|resource
      */
-    public function createUserRating($accountID, $tipID) {
+    public function createUserRating($accountID, $tipsID) {
         try {
             $dbconn = $this -> getDBInfo();
-            pg_prepare($dbconn, "createUserRatingQuery", "INSERT INTO USERRATING (accountID, tipsID) VALUES ($1, $2)");
-            $result = pg_execute($dbconn, "createUserRatingQuery", array($accountID, $tipID));
-            return $result;
+            $statement = $dbconn -> prepare("INSERT INTO USERRATINGS (accountID, tipsID) VALUES (:accountID, :tipsID)");
+
+            $statement -> bindValue(':accountID', $accountID);
+            $statement -> bindValue(':tipsID', $tipsID);
+            $statement -> execute();
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -39,20 +41,22 @@ class UserRatingData {
 
     /**
      * @param $accountID
-     * @param $tipID
+     * @param $tipsID
      * @return bool|null
      */
-    public function checkUserRating($accountID, $tipID) {
+    public function checkUserRating($accountID, $tipsID) {
         try {
             $dbconn = $this -> getDBInfo();
-            pg_prepare($dbconn, "checkUserRatingQuery", "SELECT * FROM USERRATING WHERE accountID = $1 AND tipID = $2");
-            $result = pg_execute($dbconn, "checkUserRatingQuery", array($accountID, $tipID));
+            $statement = $dbconn -> prepare("SELECT * FROM USERRATINGS WHERE accountID = ? AND tipsID = ?");
+            $statement -> execute(array($accountID, $tipsID));
+            $result = $statement -> fetchAll();
 
-            $numRows = pg_num_rows($result);
+            $numRows = count($result);
+            echo $numRows;
             if ($numRows == 1) {
-                return true;
+                return "Rating For Tip Found";
             } else {
-                return false;
+                return "No Rating Found";
             }
         } catch (Exception $e) {
             echo $e;

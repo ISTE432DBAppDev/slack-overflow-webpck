@@ -8,17 +8,20 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $tipService = new TipService();
 
         if ($_GET['function'] == 'getAllTipsForLanguage') {
-            $result = $tipService -> getAllTipsForLanguage($_GET['language']);
-            echo $result;
+            $status = $tipService -> getAllTipsForLanguage($_GET['language']);
+            echo $status;
 
         } else if ($_GET['function'] == 'createTip') {
-            $tipService -> createTip($_GET['accountID'], $_GET['languageID'], $_GET['description']);
+            $status = $tipService -> createTip($_GET['accountID'], $_GET['languageID'], $_GET['description']);
+            echo $status;
 
         } else if ($_GET['function'] == 'upvoteTip') {
-            $tipService -> upvoteTip($_GET['tipsID']);
+            $status = $tipService -> upvoteTip($_GET['tipsID']);
+            echo $status;
 
         } else if ($_GET['function'] == 'downvoteTip') {
-            $tipService -> downvoteTip($_GET['tipsID']);
+            $status = $tipService -> downvoteTip($_GET['tipsID']);
+            echo $status;
 
         } else {
             echo '{"error": "Please provide a valid function name"}';
@@ -28,10 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     } else if ($_GET['fileName'] == 'AccountService.class.php') {
         $accountService = new AccountService();
         if ($_GET['function'] == 'createAccount') {
-            $accountService -> createAccount($_GET['userName'], $_GET['pwd']);
+            $status = $accountService -> createAccount($_GET['userName'], $_GET['pwd']);
+            echo $status;
 
         } else if ($_GET['function'] == 'loginAccount') {
-            $accountService -> loginAccount($_GET['userName'], $_GET['pwd']);
+            $status = $accountService -> loginAccount($_GET['userName'], $_GET['pwd']);
+            echo $status;
 
         } else {
             echo '{"error": "Please provide a valid function name"}';

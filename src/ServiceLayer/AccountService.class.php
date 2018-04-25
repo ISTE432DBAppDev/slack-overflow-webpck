@@ -75,7 +75,7 @@ class AccountService {
     public function loginAccount($userName, $pwd) {
         $userName = filter_var($userName, FILTER_SANITIZE_EMAIL);
         $salt = $this -> dataClass -> getAccountSalt($userName);
-        if ($salt != false){
+        if (gettype($salt) == "string"){
             $saltedPWD = $pwd . $salt;
             $hashedPWD = hash('sha256', $saltedPWD);
             $status = $this -> dataClass -> loginAccount($userName, $hashedPWD);

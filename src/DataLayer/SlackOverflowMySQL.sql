@@ -45,8 +45,10 @@ CREATE TABLE `UserRatings` (
   `rating;_score` TINYINT UNSIGNED NOT NULL,
   -- CONSTRAINT chk_rating CHECK (rating_score >= 0 AND rating_score  <= 5
 ),
-  CONSTRAINT FK_postID
-  FOREIGN KEY (`postID`) REFERENCES Posts (postID)
+CONSTRAINT FK_postID
+FOREIGN KEY (`postID`
+) REFERENCES Posts (postID
 )
-  ENGINE = InnoDB
-  DEFAULT CHARSET = latin1;
+)
+ENGINE = InnoDB
+DEFAULT CHARSET = latin1;

@@ -1,4 +1,7 @@
 /* styles in src/style directory are applied to the whole page */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+
 body {
   background: #FAFAFB;
   font-size: 16px;
@@ -14,4 +17,43 @@ main {
 footer {
   text-align: center;
   font-size: 0.8em;
+  /*** position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; ***/
 }
+
+.slack-title {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #222426;
+}
+
+.slack-title-bold {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #222426;
+  font-weight: 600;
+}
+
+.row {
+  padding-bottom: 10px;
+}
+
+.button-padding {
+  margin-bottom: 10px !important;
+  min-width: 210px;
+}
+
+.form-control  {
+  border-radius: 2px !important;
+}
+
+.btn {
+  border-radius: 2px !important;
+}
+
+/*** Media Queries ***/
+/*** @media only screen and (max-height: 450px) {
+  footer {
+    position: relative !important;
+  }
+}***/

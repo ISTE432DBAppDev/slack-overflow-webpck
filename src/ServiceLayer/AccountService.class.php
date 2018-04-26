@@ -42,7 +42,7 @@ class AccountService {
 
         $status = $this -> dataClass -> createAccount($userName, $hashedPWD, $salt);
         if ($status == true) {
-            return '{"data":' . $status . '}';
+            $this -> loginAccount($userName, $pwd);
         } else {
             return "{'error': 'This account name is already in use.'}";
         }
@@ -82,7 +82,7 @@ class AccountService {
         } else {
             $status = "Salt not found";
         }
-        return '{"data":' . $status . '}';
+        return '{"accountid":' . $status . '}';
     }
 }
 

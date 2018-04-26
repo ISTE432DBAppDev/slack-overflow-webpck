@@ -11,7 +11,8 @@ class AccountData {
     /**
      * @param $userName
      * @param $pwd
-     * @return null|resource
+     * @param $salt
+     * @return boolean|null|resource
      */
     public function createAccount($userName, $pwd, $salt) {
         try {
@@ -22,12 +23,12 @@ class AccountData {
             $statement -> bindValue(':password', $pwd);
             $statement -> bindValue(':salt', $salt);
 
-            $statement -> execute();
+            $result = $statement -> execute();
+            return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
         }
-
     }
 
     /**
@@ -57,9 +58,9 @@ class AccountData {
 
             $numRows = count($result);
             if ($numRows == 1) {
-                return '"True"';
+                return $result[0]['accountid'];
             } else {
-                return '"False"';
+                return '-1';
             }
 
         } catch (Exception $e) {

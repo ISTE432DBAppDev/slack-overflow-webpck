@@ -21,8 +21,10 @@ const TipsComponent = {
     $onInit() {
       this.TipsService.hello();
       const vm = this;
-      
-      vm.tipsList = this.TipsService.getTips(vm.data.language);
+
+      this.TipsService.getTips(vm.data.language).then(function(data){
+        vm.tipslist = data;
+      })
       console.log("vm.data.language: " + vm.data.language);
 
       vm.upVote = function(tipId){

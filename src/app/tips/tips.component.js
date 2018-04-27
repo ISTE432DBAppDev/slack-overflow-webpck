@@ -12,10 +12,11 @@ const TipsComponent = {
     data: '<',
   },
   controller: class TipsComponent {
-    constructor(TipsService, $scope) {
+    constructor(TipsService, $scope, $sce) {
       'ngInject';
       this.TipsService = TipsService;
       this.$scope = $scope;
+      this.$sce = $sce;
     }
 
     $onInit() {
@@ -23,7 +24,14 @@ const TipsComponent = {
       const vm = this;
 
       this.TipsService.getTips(vm.data.language).then(function(data){
+        console.log("this.TipsService.getTips");
         vm.tipslist = data;
+
+        for(var i=0;i < data.length; i++){
+          vm.tipslist[i].description = vm.$sce.trustAsHtml(data[i].description);
+          vm.tipslist[i].rating = vm.$sce.trustAsHtml(data[i].rating.toString());
+        }
+
       })
       console.log("vm.data.language: " + vm.data.language);
 

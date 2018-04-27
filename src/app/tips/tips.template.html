@@ -8,6 +8,7 @@
     <h2>Add a tip:</h2>
     <form class="form-inline" ng-submit="vm.addTip()">
       <div class="row">
+        <p>Title</p>
         <input type="text" class="form-control" ng-model="vm.tipDesc" required>
       </div>
       <div class="row">
@@ -18,7 +19,23 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-4 col-md-6 portfolio-item tip" ng-repeat="tip in vm.tipsList.data">
+  <div class="col-lg-4 col-md-6 portfolio-item tip" ng-repeat="tip in vm.tipslist">
+
+    <div class="card h-100">
+      <h4 class="card-header">
+        <p class="card-text" ng-bind-html="tip.description"></p>
+      </h4>
+      <div class="card-body">
+        <a ng-click="vm.upVote(tip.tipsID)"><i class="fa fa-thumbs-up" style="color:forestgreen"></i></a>
+        <a ng-click="vm.downVote(tip.tipsID)"><i class="fa fa-thumbs-down" style="color:red"></i></a>
+        Rating: <span ng-bind-html="tip.rating"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="row">
+  <div class="col-lg-4 col-md-6 portfolio-item tip" ng-repeat="tip in vm.tipsList">
     <div class="card h-100">
       <h4 class="card-header">
         <p class="card-text">{{tip.description}}</p>
@@ -31,4 +48,4 @@
     </div>
   </div>
 </div>
-
+-->

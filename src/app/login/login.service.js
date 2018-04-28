@@ -1,8 +1,8 @@
 export default class LoginService {
-  constructor($log) {
+  constructor($log, $http) {
     'ngInject';
-
     this.$log = $log;
+    this.$http = $http;
   }
 
   hello() {
@@ -11,27 +11,18 @@ export default class LoginService {
 
   loginAccount(username, password){
     var result;
-    if(username == "abc" && password == "123"){
-      result = {
-        data: {
-          userID: 1
-        }
-      };
-    } else{
-      result = {
-        data: {
-          userID: null
-        }
-      };
-    }
-    return result;
+    var loginUrl = "http://localhost:8888/ServiceLayer/ServiceCalls.php?fileName=AccountService.class.php&function=loginAccount";
+    var loginParams="&userName="+username+"&pwd="+password;
+    return this.$http.get(loginUrl+loginParams).then(function(response){
+      return response.data;
+    });
   }
 
   createAccount(username, password){
-    return {
-      data: {
-        userID: 1
-      }
-    }
+    var createUrl = "http://localhost:8888/ServiceLayer/ServiceCalls.php?fileName=AccountService.class.php&function=createAccount";
+    var loginParams="&userName="+username+"&pwd="+password;
+    return this.$http.get(createUrl+loginParams).then(function(response){
+      return response.data;
+    });
   }
 }

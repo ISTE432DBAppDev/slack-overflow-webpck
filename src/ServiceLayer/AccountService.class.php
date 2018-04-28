@@ -44,7 +44,7 @@ class AccountService {
         if ($status == true) {
             $this -> loginAccount($userName, $pwd);
         } else {
-            return "{'error': 'This account name is already in use.'}";
+            return '{"error": "This account name is already in use."}';
         }
 
     }
@@ -85,4 +85,3 @@ class AccountService {
         return '{"accountid":' . $status . '}';
     }
 }
-

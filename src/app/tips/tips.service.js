@@ -22,7 +22,13 @@ export default class TipsService {
     switch(language){
       case "java":
         var langId="1";
-      break;
+        break;
+      case "javascript":
+        var langId="2";
+        break;
+      case "php":
+        var langId="3";
+        break;
     }
     return this.$http.get(baseUrl+langId).then(function(response){
       return response.data;
@@ -31,11 +37,22 @@ export default class TipsService {
 
 
   createTip(accountID, language, description){
-    return { data:
-      {
-        success: "true"
-      }
-    };
+    var baseUrl="http://localhost:8888/ServiceLayer/ServiceCalls.php?fileName=TipService.class.php&function=createTip&";
+    switch(language){
+      case "java":
+        var langId="1";
+        break;
+      case "javascript":
+        var langId="2";
+        break;
+      case "php":
+        var langId="3";
+        break;
+    }
+    var accountParam="accountID="+accountID+"&languageID="+langId+"&description="+description;
+    return this.$http.get(baseUrl+accountParam).then(function(response){
+      return response.data;
+    });
   }
 
   // retrieves tips created by the currently logged in user

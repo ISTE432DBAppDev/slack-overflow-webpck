@@ -47,7 +47,6 @@ const TipsComponent = {
                 var newRating = currentRating + 1;
                 // update vm.rating
                 vm.tipslist[i].rating = vm.$sce.trustAsHtml(newRating.toString())
-                var rating  = vm.tipslist[tipId].rating ;
               }
             }
           }
@@ -68,7 +67,6 @@ const TipsComponent = {
                 var newRating = currentRating - 1;
                 // update vm.rating
                 vm.tipslist[i].rating = vm.$sce.trustAsHtml(newRating.toString())
-                var rating  = vm.tipslist[tipId].rating ;
               }
             }
           }

@@ -42,7 +42,8 @@ class AccountService {
 
         $status = $this -> dataClass -> createAccount($userName, $hashedPWD, $salt);
         if ($status == true) {
-            $this -> loginAccount($userName, $pwd);
+            $loginStatus = $this -> loginAccount($userName, $pwd);
+            return $loginStatus;
         } else {
             return "{'error': 'This account name is already in use.'}";
         }

@@ -28,17 +28,22 @@ const LoginComponent = {
             if(response.error != null){
               console.error(response.error);
             }else{
-              vm.user.userID = response.userID;
+              vm.user.userID = response.accountid;
               console.log("vm.user.userID: " + vm.user.userID);
             }
           });
         } else {
-            var success = this.LoginService.loginAccount(vm.username, vm.password);
-              if(response.userID != null){
-                vm.user.userID = data.data.userID;
-                console.log("vm.user.userID: " + vm.user.userID);
-              }
-          console.log("Logging in: " + data.data.userID);
+          this.LoginService.loginAccount(vm.username, vm.password).then(function(response){
+            if(response.error != null){
+              console.error(response.error);
+            }else{
+              vm.user.userID = response.accountid;
+              console.log("vm.user.userID: " + vm.user.userID);
+              console.log("Logging in: " + response.accountid);
+
+            }
+          });
+
         }
       }
     }

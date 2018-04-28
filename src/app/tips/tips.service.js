@@ -40,18 +40,16 @@ export default class TipsService {
 
   // retrieves tips created by the currently logged in user
   upVote(tipID, accountID){
-    return { data:
-      {
-        success: "true"
-      }
-    };
+    var voteUrl = "http://localhost:8888/ServiceLayer/ServiceCalls.php?fileName=TipService.class.php&function=upvoteTip&tipsID=";
+    return this.$http.get(voteUrl+tipID).then(function(response){
+      return response.data;
+    });
   }
 
   downVote(tipID, accountID){
-    return { data:
-      {
-        success: "true"
-      }
-    };
+    var voteUrl = "http://localhost:8888/ServiceLayer/ServiceCalls.php?fileName=TipService.class.php&function=downvoteTip&tipsID=";
+    return this.$http.get(voteUrl+tipID).then(function(response){
+      return response.data;
+    });
   }
 }

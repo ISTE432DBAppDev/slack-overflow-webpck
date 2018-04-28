@@ -36,12 +36,44 @@ const TipsComponent = {
       console.log("vm.data.language: " + vm.data.language);
 
       vm.upVote = function(tipId){
-        var success = this.TipsService.upVote(tipId, vm.data.userID);
+        this.TipsService.upVote(tipId, vm.data.userID).then(function(response){
+          if(response == "true"){
+            // Grab the tip object that was clicked
+            for(var i=0;i<vm.tipslist.length;i++){
+              if(vm.tipslist[i].tipsid == tipId){
+                // get numerical value of current rating
+                var currentRating = parseInt(vm.tipslist[i].rating.toString());
+                // Add 1 to the vote
+                var newRating = currentRating + 1;
+                // update vm.rating
+                vm.tipslist[i].rating = vm.$sce.trustAsHtml(newRating.toString())
+                var rating  = vm.tipslist[tipId].rating ;
+              }
+            }
+          }
+
+        });
         console.log("Vote Up!");
       }
 
       vm.downVote = function(tipId){
-        var success = this.TipsService.downVote(tipId, vm.data.userID);
+        this.TipsService.downVote(tipId, vm.data.userID).then(function(response){
+          if(response == "true"){
+            // Grab the tip object that was clicked
+            for(var i=0;i<vm.tipslist.length;i++){
+              if(vm.tipslist[i].tipsid == tipId){
+                // get numerical value of current rating
+                var currentRating = parseInt(vm.tipslist[i].rating.toString());
+                // Add 1 to the vote
+                var newRating = currentRating - 1;
+                // update vm.rating
+                vm.tipslist[i].rating = vm.$sce.trustAsHtml(newRating.toString())
+                var rating  = vm.tipslist[tipId].rating ;
+              }
+            }
+          }
+
+        });
         console.log("Vote Down!");
       }
 

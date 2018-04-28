@@ -70,6 +70,7 @@ class TipData {
             $statement -> bindValue(':tipsID', $tipsID);
 
             $statement -> execute();
+            echo "true";
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -88,6 +89,7 @@ class TipData {
             $statement -> bindValue(':tipsID', $tipsID);
 
             $statement -> execute();
+            echo "true";
         } catch (Exception $e) {
             echo $e;
             return null;

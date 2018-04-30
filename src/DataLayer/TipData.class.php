@@ -22,6 +22,7 @@ class TipData {
             $statement -> bindValue(':description', $description);
 
             $statement -> execute();
+            echo "true";
         } catch (Exception $e) {
             echo $e;
             return null;

@@ -57,6 +57,18 @@ footer {
   min-width: 0;
 }
 
+.fa.fa-question-circle {
+  margin-left: 20px;
+  font-size: 24px;
+  opacity: .7;
+  color: orange;
+  text-decoration: none;
+}
+.fa.fa-question-circle:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
 /*** Media Queries ***/
 /*** @media only screen and (max-height: 450px) {
   footer {

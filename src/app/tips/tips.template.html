@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <h1>Tips on <span style="text-transform: uppercase;">{{vm.data.language}}!</span></h1>
+    <h1>Tips on <span style="text-transform: uppercase;">{{vm.data.language}}!</span><a class="fa fa-question-circle" href="#0" title="Below are tips that were added by your peers." data-toggle="tooltip" data-placement="right"></a></h1>
   </div>
 </div>
 <div class="row">
@@ -9,7 +9,7 @@
   </div>
 <div class="row addTip">
   <div class="col-xs-12">
-    <h2>Add a tip:</h2>
+    <h2>Add a tip:<a class="fa fa-question-circle" href="#0" title="Type in a message you'd like to share with other users and click the submit button." data-toggle="tooltip" data-placement="right"></a></h2>
     <form class="form-inline" ng-submit="vm.addTip()">
       <input type="text" class="form-control" ng-model="vm.tipDesc" required>
       <div class="row">

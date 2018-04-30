@@ -76,9 +76,19 @@ const TipsComponent = {
       }
 
       vm.addTip = function(){
-        var success = this.TipsService.createTip(vm.data.userID, vm.data.language, vm.tipDesc);
-        vm.tipDesc = "";
-        console.log("Tip created!");
+        this.TipsService.createTip(vm.data.userID, vm.data.language, vm.tipDesc).then(function(response){
+          var defaultRating=0;
+          var newTip = { accountid:vm.userID,
+                        description:  vm.$sce.trustAsHtml(vm.tipDesc),
+                        languageid: vm.data.language,
+                        rating:vm.$sce.trustAsHtml(defaultRating.toString())
+                      }
+          vm.tipDesc = "";
+          // Add tip to tipsList
+          vm.tipsList.push(newTip);
+
+          console.log("Tip created!");
+        });
       }
 
       vm.back = function(){

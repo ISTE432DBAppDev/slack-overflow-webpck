@@ -71,7 +71,7 @@ footer {
 }
 
 .secondary-title {
-  font-family: "Source Serif Pro";
+  font-family: "Source Serif Pro", sans-serif;
   font-size: 26px;
   color: #333333;
 }
@@ -96,6 +96,10 @@ p.card-text.ng-binding {
 
 .btn-success {
   background-color: #70be70;
+}
+
+tips .addTip input {
+  margin-bottom: 15px;
 }
 
 /*** Media Queries ***/

@@ -51,6 +51,12 @@ footer {
   border-radius: 2px !important;
 }
 
+.back{
+  float: left;
+  width: 70px !important;
+  min-width: 0;
+}
+
 /*** Media Queries ***/
 /*** @media only screen and (max-height: 450px) {
   footer {

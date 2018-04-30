@@ -1,7 +1,7 @@
 <?php
 
 $host = "127.0.0.1";
-$port = "5432";
+$port = "3307";
 $dbname = "slackoverflow";
-$username = "postgres";
+$username = "root";
 $password = "";

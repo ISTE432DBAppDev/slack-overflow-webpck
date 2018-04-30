@@ -54,6 +54,9 @@ const PostsComponent = {
           vm.postsList[i].answer = vm.$sce.trustAsHtml(data.items[0].body);
         });
       };
+      vm.back = function(){
+        vm.data.back = true;
+      }
     }
   }
 };

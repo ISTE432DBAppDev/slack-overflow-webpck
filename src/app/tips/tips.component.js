@@ -81,6 +81,10 @@ const TipsComponent = {
         console.log("Tip created!");
       }
 
+      vm.back = function(){
+        vm.data.back = true;
+      }
+
     }
   }
 };

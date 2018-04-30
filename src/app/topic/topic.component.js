@@ -26,6 +26,9 @@ const TopicService = {
         console.log("Submit topic");
         vm.data.topic = topic;
       };
+      vm.back = function(){
+        vm.data.back = true;
+      }
     }
   }
 };

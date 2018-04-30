@@ -21,15 +21,18 @@ const HomeComponent = {
         };
         vm.topicData = {
           language: "",
-          topic: ""
+          topic: "",
+          back: false
         };
         vm.postsData = {
           language: "",
-          topic: ""
+          topic: "",
+          back: false
         }
         vm.tipsData = {
           language: "",
-          userID: ""
+          userID: "",
+          back: false
         };
         
         
@@ -69,7 +72,43 @@ const HomeComponent = {
           } else if(vm.topicData.topic == "tips"){
             vm.state = 'tips';
           }
-      });
+        });
+
+        /**
+         * user clicked the back button
+         */
+        this.$scope.$watch('vm.topicData.back', function () {
+          if(vm.topicData.back == true){
+            vm.topicData.back = false;
+            vm.langData.language = "";
+            vm.topicData.language = "";
+            vm.tipsData.language = "";
+            vm.postsData.language = "";
+            vm.state = 'language';
+          }
+        });
+
+        /**
+         * user clicked the back button
+         */
+        this.$scope.$watch('vm.postsData.back', function () {
+          if(vm.postsData.back == true){
+            vm.postsData.back = false;
+            vm.topicData.topic = "";
+            vm.state = 'topic';
+          }
+        });
+
+        /**
+         * user clicked the back button
+         */
+        this.$scope.$watch('vm.tipsData.back', function () {
+          if(vm.tipsData.back == true){
+            vm.tipsData.back = false;
+            vm.topicData.topic = "";
+            vm.state = 'topic';
+          }
+        });
       }
     }
 };

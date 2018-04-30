@@ -22,11 +22,15 @@ const LoginComponent = {
 
       const vm = this;
 
+      vm.loginErrorMsg = "sample";
+      vm.loginError = false;
+
       vm.login = function(){
         if(vm.createAccount == true){
           this.LoginService.createAccount(vm.username, vm.password).then(function(response){
             if(response.error != null){
-              console.error(response.error);
+              vm.loginError = true;
+              vm.loginErrorMsg = response.error;
             }else{
               vm.user.userID = response.accountid;
               console.log("vm.user.userID: " + vm.user.userID);
@@ -34,8 +38,10 @@ const LoginComponent = {
           });
         } else {
           this.LoginService.loginAccount(vm.username, vm.password).then(function(response){
-            if(response.error != null){
-              console.error(response.error);
+            if(response.error != null || !(response.accountid > 0)){
+              
+              vm.loginError = true;
+              vm.loginErrorMsg = "Your username or password are incorrect.";
             }else{
               vm.user.userID = response.accountid;
               console.log("vm.user.userID: " + vm.user.userID);

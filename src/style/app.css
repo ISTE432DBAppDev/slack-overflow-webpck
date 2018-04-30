@@ -1,6 +1,7 @@
 /* styles in src/style directory are applied to the whole page */
 
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Source+Serif+Pro');
 
 body {
   background: #FAFAFB;
@@ -67,6 +68,34 @@ footer {
 .fa.fa-question-circle:hover {
   opacity: 1;
   cursor: pointer;
+}
+
+.secondary-title {
+  font-family: "Source Serif Pro";
+  font-size: 26px;
+  color: #333333;
+}
+
+div.card.h-100 {
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+p.card-text.ng-binding {
+  color: #285d8b;
+  font-size: 22px;
+}
+
+.btn-info {
+  background-color: #63bee9;
+}
+
+.btn-warning {
+  background-color: #f1b65d;
+}
+
+.btn-success {
+  background-color: #70be70;
 }
 
 /*** Media Queries ***/

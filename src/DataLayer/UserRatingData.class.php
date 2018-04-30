@@ -54,9 +54,9 @@ class UserRatingData {
             $numRows = count($result);
             echo $numRows;
             if ($numRows == 1) {
-                return "Rating For Tip Found";
+                return '{"status": "Rating For Tip Found"}';
             } else {
-                return "No Rating Found";
+                return '{"status": "No Rating Found"}';
             }
         } catch (Exception $e) {
             echo $e;

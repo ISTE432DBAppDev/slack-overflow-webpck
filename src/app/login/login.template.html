@@ -21,9 +21,14 @@
         </label>
       </div>
       <label>
-          
+
       <div class="row">
         <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+      <div class="row" ng-if="vm.loginError">
+        <div class="alert alert-danger" role="alert">
+          {{vm.loginErrorMsg}}
+        </div>
       </div>
     </form>
   </div>

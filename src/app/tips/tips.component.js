@@ -22,6 +22,8 @@ const TipsComponent = {
     $onInit() {
       this.TipsService.hello();
       const vm = this;
+      var executeUpVote =  false;
+      var executeDownVote =  false;
 
       this.TipsService.getTips(vm.data.language).then(function(data){
         console.log("this.TipsService.getTips");
@@ -56,26 +58,35 @@ const TipsComponent = {
       }
 
       vm.downVote = function(tipId){
-        this.TipsService.downVote(tipId, vm.data.userID).then(function(response){
-          if(response == "true"){
-            // Grab the tip object that was clicked
-            for(var i=0;i<vm.tipslist.length;i++){
-              if(vm.tipslist[i].tipsid == tipId){
-                // get numerical value of current rating
-                var currentRating = parseInt(vm.tipslist[i].rating.toString());
-                // Add 1 to the vote
-                var newRating = currentRating - 1;
-                // update vm.rating
-                vm.tipslist[i].rating = vm.$sce.trustAsHtml(newRating.toString())
+        if(executeDownVote == false){
+          this.TipsService.downVote(tipId, vm.data.userID).then(function(response){
+            if(response == "true"){
+              // Grab the tip object that was clicked
+              for(var i=0;i<vm.tipslist.length;i++){
+                if(vm.tipslist[i].tipsid == tipId){
+                  // get numerical value of current rating
+                  var currentRating = parseInt(vm.tipslist[i].rating.toString());
+                  // Add 1 to the vote
+                  var newRating = currentRating - 1;
+                  // update vm.rating
+                  vm.tipslist[i].rating = vm.$sce.trustAsHtml(newRating.toString())
+                }
               }
             }
-          }
 
-        });
+          });
+          executeDownVote = true;
+        }else{
+              console.error("You Have Already Voted");
+            }
         console.log("Vote Down!");
       }
 
+
       vm.addTip = function(){
+        if(executeUpVote == false){
+
+        }
         this.TipsService.createTip(vm.data.userID, vm.data.language, vm.tipDesc).then(function(response){
           var defaultRating=0;
           var newTip = { accountid:vm.userID,
@@ -85,7 +96,7 @@ const TipsComponent = {
                       }
           vm.tipDesc = "";
           // Add tip to tipsList
-          vm.tipsList.push(newTip);
+          vm.tipslist.push(newTip);
 
           console.log("Tip created!");
         });

@@ -1,8 +1,10 @@
 import angular from 'angular';
 import 'angular-mocks';
 import AppModule from '../app';
+import LanguageService from './LanguageService';
+import { val } from '@uirouter/angularjs';
 
-describe('topic component controller', () => {
+describe('language component controller', () => {
   let $controller; 
   it('Shoud Pass a dummy test', () => {
     expect(true).toBeTruthy();
@@ -11,5 +13,4 @@ describe('topic component controller', () => {
     var button = element.find('button.button');
     expect(button.length).toBe(3);
   });
-
 });
